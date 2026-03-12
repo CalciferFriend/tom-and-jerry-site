@@ -1,0 +1,222 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const commands = [
+  {
+    command: 'tj onboard',
+    description: 'Interactive setup wizard for configuring Tom or Jerry',
+  },
+  {
+    command: 'tj send "<task>"',
+    description: 'Delegate a task to Jerry (non-blocking)',
+  },
+  {
+    command: 'tj send --wait "<task>"',
+    description: 'Send task and wait for result before returning',
+  },
+  {
+    command: 'tj send --peer <name>',
+    description: 'Target a specific Jerry node by name',
+  },
+  {
+    command: 'tj send --auto',
+    description: 'Auto-select best node by capability matching',
+  },
+  {
+    command: 'tj status',
+    description: 'Check peer connectivity and health status',
+  },
+  {
+    command: 'tj peers',
+    description: 'List all configured peer nodes',
+  },
+  {
+    command: 'tj logs',
+    description: 'View task history and execution logs',
+  },
+  {
+    command: 'tj budget',
+    description: 'Show token usage and cost breakdown (cloud vs local)',
+  },
+  {
+    command: 'tj config show',
+    description: 'View current configuration',
+  },
+  {
+    command: 'tj test',
+    description: 'Run connectivity tests between Tom and Jerry',
+  },
+  {
+    command: 'tj capabilities scan',
+    description: 'Scan local hardware capabilities (GPU, RAM, CPU)',
+  },
+  {
+    command: 'tj discover',
+    description: 'Browse community nodes in the public registry',
+  },
+  {
+    command: 'tj publish',
+    description: 'Publish your node to the community registry',
+  },
+];
+---
+
+<Layout title="Docs | tom-and-jerry" description="Complete CLI command reference for tom-and-jerry">
+  <div class="max-w-6xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold mb-4">Documentation</h1>
+    <p class="text-xl text-[var(--muted)] mb-12">
+      Complete CLI command reference for tom-and-jerry protocol.
+    </p>
+
+    <!-- CLI Commands -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
+        <span class="text-[var(--primary)]">→</span> CLI Commands
+      </h2>
+
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg overflow-hidden">
+        <table class="w-full">
+          <thead class="bg-[#0a0a0a] border-b border-[var(--border)]">
+            <tr>
+              <th class="text-left p-4 font-mono text-sm text-[var(--primary)]">Command</th>
+              <th class="text-left p-4 text-sm">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {commands.map((cmd, index) => (
+              <tr class={index !== commands.length - 1 ? 'border-b border-[var(--border)]' : ''}>
+                <td class="p-4 font-mono text-sm text-[var(--secondary)] align-top whitespace-nowrap">
+                  {cmd.command}
+                </td>
+                <td class="p-4 text-sm text-[var(--muted)]">
+                  {cmd.description}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TJMessage Protocol -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
+        <span class="text-[var(--primary)]">→</span> TJMessage Protocol
+      </h2>
+
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6 mb-6">
+        <p class="text-[var(--muted)] mb-6">
+          The TJMessage protocol is the open spec for communication between Tom and Jerry nodes. Build your own compatible nodes using this format.
+        </p>
+
+        <div class="bg-[#0a0a0a] border border-[var(--border)] rounded-lg p-6 font-mono text-sm">
+          <pre class="text-[var(--text)]"><code>{`{
+  "version": "1.0",
+  "type": "task" | "result" | "wake" | "shutdown",
+  "sender": {
+    "id": "string",
+    "role": "tom" | "jerry"
+  },
+  "task": {
+    "id": "string",
+    "description": "string",
+    "requiredCapabilities": ["gpu", "70b_inference"],
+    "priority": "low" | "normal" | "high"
+  },
+  "result": {
+    "taskId": "string",
+    "status": "success" | "failure",
+    "output": "string",
+    "tokensUsed": number,
+    "durationMs": number
+  },
+  "timestamp": "ISO8601"
+}`}</code></pre>
+        </div>
+      </div>
+
+      <div class="border-l-4 border-[var(--primary)] bg-[var(--surface)] p-4">
+        <p class="text-sm text-[var(--muted)]">
+          <span class="font-bold text-[var(--text)]">Building a custom node?</span> The protocol is designed for extensibility. Add your own capabilities, message types, and routing logic.
+        </p>
+      </div>
+    </section>
+
+    <!-- Usage Examples -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
+        <span class="text-[var(--primary)]">→</span> Usage Examples
+      </h2>
+
+      <div class="space-y-6">
+        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+          <h3 class="font-bold mb-3">Basic task delegation</h3>
+          <div class="bg-[#0a0a0a] border border-[var(--border)] rounded-lg p-4 font-mono text-sm">
+            <code class="text-[var(--secondary)]">$</code> <code class="text-[var(--text)]">tj send "analyze this codebase for security issues"</code>
+          </div>
+        </div>
+
+        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+          <h3 class="font-bold mb-3">Wait for result</h3>
+          <div class="bg-[#0a0a0a] border border-[var(--border)] rounded-lg p-4 font-mono text-sm">
+            <code class="text-[var(--secondary)]">$</code> <code class="text-[var(--text)]">tj send --wait "generate a react component for user profile"</code>
+          </div>
+        </div>
+
+        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+          <h3 class="font-bold mb-3">Target specific node</h3>
+          <div class="bg-[#0a0a0a] border border-[var(--border)] rounded-lg p-4 font-mono text-sm">
+            <code class="text-[var(--secondary)]">$</code> <code class="text-[var(--text)]">tj send --peer jerry-workstation "run inference on 70B model"</code>
+          </div>
+        </div>
+
+        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+          <h3 class="font-bold mb-3">Check costs</h3>
+          <div class="bg-[#0a0a0a] border border-[var(--border)] rounded-lg p-4 font-mono text-sm">
+            <div class="mb-2"><code class="text-[var(--secondary)]">$</code> <code class="text-[var(--text)]">tj budget</code></div>
+            <div class="text-[var(--muted)] text-xs ml-4">
+              Cloud (Anthropic): $12.45<br/>
+              Local (Jerry): $0.00<br/>
+              Total saved: $67.23
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Configuration -->
+    <section>
+      <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
+        <span class="text-[var(--primary)]">→</span> Configuration
+      </h2>
+
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+        <p class="text-[var(--muted)] mb-4">
+          Config is stored at <code class="text-[var(--secondary)] text-sm">~/.tom-and-jerry/config.json</code>
+        </p>
+
+        <div class="bg-[#0a0a0a] border border-[var(--border)] rounded-lg p-6 font-mono text-xs overflow-x-auto">
+          <pre class="text-[var(--text)]"><code>{`{
+  "role": "tom",
+  "peers": [
+    {
+      "id": "jerry-home",
+      "ip": "100.64.1.2",
+      "capabilities": ["gpu", "rtx4090", "70b_inference"],
+      "wakeOnLan": {
+        "enabled": true,
+        "mac": "AA:BB:CC:DD:EE:FF"
+      }
+    }
+  ],
+  "models": {
+    "provider": "anthropic",
+    "apiKey": "sk-ant-...",
+    "defaultModel": "claude-3-5-sonnet-20241022"
+  }
+}`}</code></pre>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

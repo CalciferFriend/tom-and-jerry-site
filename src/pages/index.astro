@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="tom-and-jerry | Open protocol for multi-machine AI agents">
+  <!-- Hero Section -->
+  <section class="max-w-7xl mx-auto px-6 py-24">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-6xl font-bold mb-6 leading-tight">
+        Two agents. Separate machines.<br />
+        <span class="text-[var(--primary)]">One command.</span>
+      </h1>
+      <p class="text-xl text-[var(--muted)] mb-12 leading-relaxed">
+        tom-and-jerry is an open protocol for connecting AI agents across your machines.<br />
+        Tom orchestrates. Jerry computes. You just describe the task.
+      </p>
+
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6 mb-8 font-mono text-left">
+        <div class="flex items-center gap-2 mb-3">
+          <div class="w-3 h-3 rounded-full bg-red-500"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+          <div class="w-3 h-3 rounded-full bg-green-500"></div>
+        </div>
+        <code class="text-[var(--secondary)]">$ <span class="text-[var(--text)]">npm install -g tom-and-jerry</span></code>
+      </div>
+
+      <div class="flex items-center justify-center gap-4">
+        <a href="/install" class="bg-[var(--primary)] text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity flex items-center gap-2">
+          Get Started
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </a>
+        <a href="https://github.com/CalciferFriend/tom-and-jerry" target="_blank" rel="noopener noreferrer" class="border border-[var(--border)] px-6 py-3 rounded-lg font-medium hover:border-[var(--primary)] transition-colors flex items-center gap-2">
+          GitHub
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold mb-12 text-center">How it works</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-8">
+        <div class="text-4xl mb-4">🔥</div>
+        <h3 class="text-xl font-bold mb-3">Tom</h3>
+        <p class="text-[var(--muted)] leading-relaxed">
+          Always-on orchestrator. Lives in the cloud or your server. Sends tasks, manages costs, stays awake.
+        </p>
+      </div>
+
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-8">
+        <div class="text-4xl mb-4">💤</div>
+        <h3 class="text-xl font-bold mb-3">Jerry</h3>
+        <p class="text-[var(--muted)] leading-relaxed">
+          GPU powerhouse. Sleeps to save power. Tom wakes it via Wake-on-LAN when needed, shuts it down when done.
+        </p>
+      </div>
+
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-8">
+        <div class="text-4xl mb-4">⚡</div>
+        <h3 class="text-xl font-bold mb-3">tj send</h3>
+        <p class="text-[var(--muted)] leading-relaxed">
+          One command to delegate anything. Capability-aware routing picks the right node automatically.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Install -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold mb-8 text-center">Quick install</h2>
+    <div class="max-w-3xl mx-auto bg-[var(--surface)] border border-[var(--border)] rounded-lg p-8 font-mono">
+      <div class="flex items-center gap-2 mb-4">
+        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+      </div>
+      <div class="space-y-3 text-sm">
+        <div><code class="text-[var(--secondary)]">$</code> <code class="text-[var(--text)]">npm install -g tom-and-jerry</code></div>
+        <div><code class="text-[var(--secondary)]">$</code> <code class="text-[var(--text)]">tj onboard</code> <code class="text-[var(--muted)]"># answer a few questions</code></div>
+        <div><code class="text-[var(--secondary)]">$</code> <code class="text-[var(--text)]">tj send "summarize these files"</code> <code class="text-[var(--muted)]"># done</code></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold mb-12 text-center">Features</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+        <h3 class="font-bold mb-2 text-[var(--primary)]">Wake-on-LAN</h3>
+        <p class="text-sm text-[var(--muted)]">Jerry wakes only when needed</p>
+      </div>
+
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+        <h3 class="font-bold mb-2 text-[var(--primary)]">Capability routing</h3>
+        <p class="text-sm text-[var(--muted)]">Tasks go to the right node</p>
+      </div>
+
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+        <h3 class="font-bold mb-2 text-[var(--primary)]">Budget tracking</h3>
+        <p class="text-sm text-[var(--muted)]">Cloud vs local cost breakdown</p>
+      </div>
+
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+        <h3 class="font-bold mb-2 text-[var(--primary)]">Multi-Jerry</h3>
+        <p class="text-sm text-[var(--muted)]">Add as many compute nodes as you want</p>
+      </div>
+
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+        <h3 class="font-bold mb-2 text-[var(--primary)]">Docker ready</h3>
+        <p class="text-sm text-[var(--muted)]">One-liner to run Tom in a container</p>
+      </div>
+
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+        <h3 class="font-bold mb-2 text-[var(--primary)]">Open protocol</h3>
+        <p class="text-sm text-[var(--muted)]">TJMessage spec, build your own nodes</p>
+      </div>
+    </div>
+  </section>
+</Layout>

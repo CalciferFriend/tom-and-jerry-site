@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "tom-and-jerry is an open protocol for connecting AI agents across your machines." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={description}>
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen flex flex-col">
+  <nav class="border-b border-[var(--border)] bg-[var(--surface)]">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-2xl font-bold font-mono text-[var(--primary)] hover:opacity-80 transition-opacity">
+        tj
+      </a>
+      <div class="flex items-center gap-8">
+        <a href="/install" class="text-sm hover:text-[var(--primary)] transition-colors">Install</a>
+        <a href="/docs" class="text-sm hover:text-[var(--primary)] transition-colors">Docs</a>
+        <a href="/hardware" class="text-sm hover:text-[var(--primary)] transition-colors">Hardware</a>
+        <a href="https://github.com/CalciferFriend/tom-and-jerry" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--primary)] transition-colors flex items-center gap-1">
+          GitHub
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-1">
+    <slot />
+  </main>
+
+  <footer class="border-t border-[var(--border)] bg-[var(--surface)] py-8">
+    <div class="max-w-7xl mx-auto px-6 text-center text-sm text-[var(--muted)]">
+      tom-and-jerry is open source. MIT License. Built by 🔥 + 🤖
+    </div>
+  </footer>
+</body>
+</html>

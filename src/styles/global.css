@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #0a0a0a;
+    --surface: #111111;
+    --border: #222222;
+    --primary: #ff6b35;
+    --secondary: #4ade80;
+    --text: #e5e5e5;
+    --muted: #666666;
+  }
+
+  body {
+    @apply bg-[var(--background)] text-[var(--text)];
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+}

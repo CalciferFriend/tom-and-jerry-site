@@ -1,0 +1,211 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const profiles = [
+  {
+    icon: '🖥️',
+    name: 'RTX 4090',
+    platform: 'Linux / Windows',
+    bestFor: ['70B inference', 'Image generation', 'Video processing', 'Multi-modal tasks'],
+    specs: ['24GB VRAM', 'CUDA 11.8+', 'PCIe 4.0'],
+    recommended: true,
+  },
+  {
+    icon: '🖥️',
+    name: 'RTX 3070 Ti',
+    platform: 'Linux / Windows',
+    bestFor: ['30B inference', 'Code generation', 'Embeddings', 'RAG pipelines'],
+    specs: ['8GB VRAM', 'CUDA 11.4+', 'PCIe 4.0'],
+    recommended: false,
+  },
+  {
+    icon: '🍓',
+    name: 'Raspberry Pi 5',
+    platform: 'Linux (ARM64)',
+    bestFor: ['Lightweight tasks', 'Embeddings', 'Summaries', 'Always-on daemon'],
+    specs: ['8GB RAM', 'ARM Cortex-A76', 'USB 3.0'],
+    recommended: false,
+  },
+  {
+    icon: '🍎',
+    name: 'Apple M2 Mac',
+    platform: 'macOS',
+    bestFor: ['Local inference', 'On-device tasks', 'Privacy-focused workloads'],
+    specs: ['16GB+ unified memory', 'Metal support', 'Apple Silicon'],
+    recommended: false,
+  },
+  {
+    icon: '🐳',
+    name: 'Docker (CPU)',
+    platform: 'Any',
+    bestFor: ['Basic orchestration', 'Task routing', 'Lightweight compute'],
+    specs: ['4GB RAM', 'Docker 20.10+', 'x86_64'],
+    recommended: false,
+  },
+];
+---
+
+<Layout title="Hardware | tom-and-jerry" description="Supported hardware profiles for Jerry compute nodes">
+  <div class="max-w-6xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold mb-4">Hardware profiles</h1>
+    <p class="text-xl text-[var(--muted)] mb-12">
+      Jerry supports a wide range of hardware. Pick the profile that matches your compute node.
+    </p>
+
+    <!-- Hardware Cards -->
+    <div class="grid md:grid-cols-2 gap-6">
+      {profiles.map((profile) => (
+        <div class={`bg-[var(--surface)] border rounded-lg p-8 relative ${
+          profile.recommended
+            ? 'border-[var(--primary)]'
+            : 'border-[var(--border)]'
+        }`}>
+          {profile.recommended && (
+            <div class="absolute top-4 right-4">
+              <span class="bg-[var(--primary)] text-white text-xs font-bold px-2 py-1 rounded">
+                RECOMMENDED
+              </span>
+            </div>
+          )}
+
+          <div class="flex items-start gap-4 mb-4">
+            <span class="text-5xl">{profile.icon}</span>
+            <div>
+              <h3 class="text-2xl font-bold mb-1">{profile.name}</h3>
+              <p class="text-sm text-[var(--muted)]">{profile.platform}</p>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <h4 class="text-sm font-bold text-[var(--primary)] mb-2">Best for</h4>
+            <ul class="space-y-1">
+              {profile.bestFor.map((item) => (
+                <li class="text-sm text-[var(--muted)] flex items-start gap-2">
+                  <span class="text-[var(--secondary)] mt-0.5">→</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-bold text-[var(--primary)] mb-2">Specs</h4>
+            <div class="flex flex-wrap gap-2">
+              {profile.specs.map((spec) => (
+                <span class="text-xs bg-[#0a0a0a] border border-[var(--border)] rounded px-2 py-1 font-mono text-[var(--muted)]">
+                  {spec}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Capability Detection -->
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
+        <span class="text-[var(--primary)]">→</span> Capability detection
+      </h2>
+
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-8">
+        <p class="text-[var(--muted)] mb-6">
+          Jerry automatically detects your hardware capabilities during onboarding. You can also manually scan at any time.
+        </p>
+
+        <div class="bg-[#0a0a0a] border border-[var(--border)] rounded-lg p-6 font-mono mb-6">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+          </div>
+          <div class="text-sm space-y-2">
+            <div><code class="text-[var(--secondary)]">$</code> <code class="text-[var(--text)]">tj capabilities scan</code></div>
+            <div class="text-[var(--muted)] text-xs mt-3 ml-4">
+              Detected capabilities:<br/>
+              → GPU: NVIDIA RTX 4090 (24GB VRAM)<br/>
+              → CPU: 16 cores, 32 threads<br/>
+              → RAM: 64GB<br/>
+              → CUDA: 11.8<br/>
+              → Supports: 70b_inference, image_gen, video_processing
+            </div>
+          </div>
+        </div>
+
+        <div class="border-l-4 border-[var(--secondary)] bg-[#0a0a0a] p-4">
+          <p class="text-sm text-[var(--muted)]">
+            Tom uses these capabilities to intelligently route tasks to the right Jerry node.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wake-on-LAN Setup -->
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
+        <span class="text-[var(--primary)]">→</span> Wake-on-LAN setup
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+          <h3 class="font-bold mb-3">Windows</h3>
+          <ol class="space-y-2 text-sm text-[var(--muted)] list-decimal list-inside">
+            <li>Enable Wake-on-LAN in BIOS/UEFI settings</li>
+            <li>Open Device Manager → Network adapters</li>
+            <li>Right-click adapter → Properties → Power Management</li>
+            <li>Check "Allow this device to wake the computer"</li>
+            <li>Advanced tab → Enable "Wake on Magic Packet"</li>
+          </ol>
+        </div>
+
+        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+          <h3 class="font-bold mb-3">Linux</h3>
+          <ol class="space-y-2 text-sm text-[var(--muted)] list-decimal list-inside">
+            <li>Enable Wake-on-LAN in BIOS/UEFI settings</li>
+            <li>Install ethtool: <code class="text-[var(--secondary)]">sudo apt install ethtool</code></li>
+            <li>Enable WoL: <code class="text-[var(--secondary)]">sudo ethtool -s eth0 wol g</code></li>
+            <li>Make persistent via systemd or network config</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="mt-6 bg-[#1a1a1a] border border-[var(--border)] rounded-lg p-6 font-mono text-sm">
+        <p class="text-[var(--muted)] mb-3">Test Wake-on-LAN from Tom:</p>
+        <code class="text-[var(--secondary)]">$</code> <code class="text-[var(--text)]">tj send --peer jerry-home "wake up"</code>
+      </div>
+    </section>
+
+    <!-- Community Nodes -->
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
+        <span class="text-[var(--primary)]">→</span> Community nodes
+      </h2>
+
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-8">
+        <p class="text-[var(--muted)] mb-6">
+          Don't have your own Jerry? Browse community nodes offering compute as a service.
+        </p>
+
+        <div class="bg-[#0a0a0a] border border-[var(--border)] rounded-lg p-6 font-mono text-sm mb-6">
+          <div><code class="text-[var(--secondary)]">$</code> <code class="text-[var(--text)]">tj discover</code></div>
+          <div class="text-[var(--muted)] text-xs mt-3 ml-4">
+            Available nodes:<br/>
+            1. jerry-gpu-cloud (RTX 4090, $0.50/hr)<br/>
+            2. jerry-homebrew (RTX 3080, $0.25/hr)<br/>
+            3. jerry-pi-cluster (4x Pi 5, $0.10/hr)
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3 bg-[#1a1a1a] border border-[var(--border)] rounded-lg p-4">
+          <span class="text-2xl">💡</span>
+          <div>
+            <p class="font-bold mb-1">Want to earn with your GPU?</p>
+            <p class="text-sm text-[var(--muted)]">
+              Publish your Jerry node to the registry: <code class="text-[var(--secondary)]">tj publish</code>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

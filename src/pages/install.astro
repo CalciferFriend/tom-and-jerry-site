@@ -1,0 +1,174 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Install | tom-and-jerry" description="Installation guide for tom-and-jerry open protocol">
+  <div class="max-w-4xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold mb-4">Install</h1>
+    <p class="text-xl text-[var(--muted)] mb-12">
+      Get up and running with tom-and-jerry in minutes. Install on both Tom (orchestrator) and Jerry (compute node).
+    </p>
+
+    <!-- Requirements -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+        <span class="text-[var(--primary)]">→</span> Requirements
+      </h2>
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+        <ul class="space-y-2 text-[var(--muted)]">
+          <li class="flex items-start gap-2">
+            <span class="text-[var(--secondary)] mt-1">✓</span>
+            <span>Node.js ≥ 22</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[var(--secondary)] mt-1">✓</span>
+            <span>Tailscale installed on both machines</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[var(--secondary)] mt-1">✓</span>
+            <span>OpenClaw installed</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Tom Installation -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+        <span class="text-4xl">🔥</span> Tom (Linux/Mac/Cloud)
+      </h2>
+
+      <p class="text-[var(--muted)] mb-6">
+        Tom is the always-on orchestrator. Install on your cloud server or always-on Linux/Mac machine.
+      </p>
+
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6 font-mono mb-6">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-3 h-3 rounded-full bg-red-500"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+          <div class="w-3 h-3 rounded-full bg-green-500"></div>
+        </div>
+        <div class="space-y-2 text-sm">
+          <div><code class="text-[var(--secondary)]">$</code> <code class="text-[var(--text)]">npm install -g tom-and-jerry</code></div>
+          <div><code class="text-[var(--secondary)]">$</code> <code class="text-[var(--text)]">tj onboard</code></div>
+        </div>
+      </div>
+
+      <div class="bg-[#1a1a1a] border border-[var(--border)] rounded-lg p-6">
+        <h3 class="text-lg font-bold mb-3">Onboarding wizard will ask:</h3>
+        <ul class="space-y-3 text-sm text-[var(--muted)]">
+          <li><span class="text-[var(--primary)]">Role:</span> Select "Tom (orchestrator)"</li>
+          <li><span class="text-[var(--primary)]">Peer IP:</span> Jerry's Tailscale IP address</li>
+          <li><span class="text-[var(--primary)]">SSH key:</span> Path to SSH key for Jerry access</li>
+          <li><span class="text-[var(--primary)]">Model provider:</span> Anthropic, OpenAI, or local</li>
+          <li><span class="text-[var(--primary)]">API key:</span> Your provider API key</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Jerry Installation -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+        <span class="text-4xl">💤</span> Jerry (Windows/Linux/Mac)
+      </h2>
+
+      <p class="text-[var(--muted)] mb-6">
+        Jerry is the GPU compute node. Install on your home PC, workstation, or any machine with compute capabilities.
+      </p>
+
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6 font-mono mb-6">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-3 h-3 rounded-full bg-red-500"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+          <div class="w-3 h-3 rounded-full bg-green-500"></div>
+        </div>
+        <div class="space-y-2 text-sm">
+          <div><code class="text-[var(--secondary)]">$</code> <code class="text-[var(--text)]">npm install -g tom-and-jerry</code></div>
+          <div><code class="text-[var(--secondary)]">$</code> <code class="text-[var(--text)]">tj onboard</code></div>
+        </div>
+      </div>
+
+      <div class="bg-[#1a1a1a] border border-[var(--border)] rounded-lg p-6">
+        <h3 class="text-lg font-bold mb-3">Onboarding wizard will ask:</h3>
+        <ul class="space-y-3 text-sm text-[var(--muted)]">
+          <li><span class="text-[var(--primary)]">Role:</span> Select "Jerry (compute node)"</li>
+          <li><span class="text-[var(--primary)]">Wake-on-LAN:</span> Enable if you want power saving</li>
+          <li><span class="text-[var(--primary)]">Hardware profile:</span> Auto-detected from your system</li>
+          <li><span class="text-[var(--primary)]">Local models:</span> Optional paths to local LLM models</li>
+        </ul>
+      </div>
+
+      <div class="mt-6 border-l-4 border-[var(--primary)] bg-[var(--surface)] p-4">
+        <p class="text-sm text-[var(--muted)]">
+          <span class="font-bold text-[var(--text)]">Windows users:</span> Enable Wake-on-LAN in BIOS and network adapter settings for full power-saving mode.
+        </p>
+      </div>
+
+      <div class="mt-4">
+        <a href="/hardware" class="text-[var(--primary)] hover:underline text-sm">
+          → View supported hardware profiles
+        </a>
+      </div>
+    </section>
+
+    <!-- Docker Installation -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+        <span class="text-4xl">🐳</span> Docker Tom
+      </h2>
+
+      <p class="text-[var(--muted)] mb-6">
+        Run Tom in a container for easy cloud deployment.
+      </p>
+
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6 font-mono">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-3 h-3 rounded-full bg-red-500"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+          <div class="w-3 h-3 rounded-full bg-green-500"></div>
+        </div>
+        <div class="text-sm">
+          <code class="text-[var(--secondary)]">$</code> <code class="text-[var(--text)]">docker run -e ANTHROPIC_API_KEY=your_key calcifierai/tom</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Verify Installation -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+        <span class="text-[var(--primary)]">→</span> Verify installation
+      </h2>
+
+      <div class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6 font-mono mb-6">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-3 h-3 rounded-full bg-red-500"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+          <div class="w-3 h-3 rounded-full bg-green-500"></div>
+        </div>
+        <div class="space-y-2 text-sm">
+          <div><code class="text-[var(--secondary)]">$</code> <code class="text-[var(--text)]">tj status</code></div>
+          <div class="text-[var(--muted)] ml-4"># Check peer connectivity</div>
+          <div class="mt-3"><code class="text-[var(--secondary)]">$</code> <code class="text-[var(--text)]">tj test</code></div>
+          <div class="text-[var(--muted)] ml-4"># Run connectivity tests</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section>
+      <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+        <span class="text-[var(--primary)]">→</span> Next steps
+      </h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/docs" class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6 hover:border-[var(--primary)] transition-colors">
+          <h3 class="font-bold mb-2">Read the docs</h3>
+          <p class="text-sm text-[var(--muted)]">Learn all CLI commands and features</p>
+        </a>
+        <a href="/hardware" class="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6 hover:border-[var(--primary)] transition-colors">
+          <h3 class="font-bold mb-2">Hardware profiles</h3>
+          <p class="text-sm text-[var(--muted)]">See what Jerry can run on your hardware</p>
+        </a>
+      </div>
+    </section>
+  </div>
+</Layout>
