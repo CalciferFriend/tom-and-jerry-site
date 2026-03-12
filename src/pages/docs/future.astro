@@ -9,9 +9,16 @@ import Layout from '../../layouts/Layout.astro';
     </div>
 
     <h1 class="text-3xl font-bold text-white mb-3">Future Research</h1>
-    <p class="text-muted text-lg mb-12">
+    <p class="text-muted text-lg mb-4">
       Where the protocol is headed — and the research shaping it.
     </p>
+    <blockquote class="border-l-2 border-[#333] pl-5 mb-12">
+      <p class="text-[#888] text-sm italic leading-relaxed">
+        "We do not have organs of communication. Our brains can display our thoughts to the outside world,
+        thereby achieving communication."
+      </p>
+      <p class="text-[#555] text-xs mt-2">— Cixin Liu, <em>The Dark Forest</em></p>
+    </blockquote>
 
     <!-- Latent Space Communication -->
     <section class="mb-16">
@@ -19,112 +26,144 @@ import Layout from '../../layouts/Layout.astro';
         <span class="text-3xl">🧠</span>
         <div>
           <h2 class="text-2xl font-semibold text-white mb-2">Latent Space Communication</h2>
-          <p class="text-muted text-sm">Inspired by LatentMAS (Princeton / UIUC / Stanford) and Interlat</p>
+          <p class="text-muted text-sm">The next layer of inter-agent coordination</p>
         </div>
       </div>
 
       <p class="text-[#ccc] leading-relaxed mb-6">
         Today, tom-and-jerry agents communicate in natural language — Tom sends a text task,
-        Jerry sends a text result. This works well, but it's lossy: every message requires
-        an agent to compress its rich internal state into discrete tokens.
+        Jerry sends a text result. This works well across machines and models, but it's inherently lossy:
+        every message requires an agent to compress its rich internal state into discrete tokens,
+        discarding alternative reasoning paths and nuance in the process.
       </p>
 
-      <p class="text-[#ccc] leading-relaxed mb-6">
-        Recent research proposes skipping that translation entirely. Instead of writing a
-        paragraph, agents exchange raw hidden states — the continuous vector representations
-        generated inside the model before any token is decoded. The receiving agent picks up
-        context as if it had been thinking those thoughts itself.
+      <p class="text-[#ccc] leading-relaxed mb-8">
+        Two recent papers propose skipping that translation entirely. Instead of writing a paragraph,
+        agents exchange raw hidden states — the continuous vector representations generated inside
+        the model before any token is decoded. The receiving agent picks up context as if it had
+        been thinking those thoughts itself.
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+      <!-- Paper cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
         <div class="bg-[#111] border border-[#222] rounded-lg p-5">
-          <div class="text-accent font-mono text-sm mb-2">LatentMAS</div>
-          <div class="text-white font-medium mb-3">Training-free latent collaboration</div>
-          <ul class="text-[#999] text-sm space-y-1.5">
-            <li>+14.6% accuracy over text-based MAS</li>
-            <li>70–84% fewer output tokens</li>
-            <li>4–4.3× faster inference</li>
-            <li>Works with existing model architectures</li>
-          </ul>
-          <a href="https://arxiv.org/abs/2511.20639" target="_blank"
-            class="inline-block mt-4 text-xs text-accent hover:underline">arXiv:2511.20639 ↗</a>
-        </div>
-        <div class="bg-[#111] border border-[#222] rounded-lg p-5">
-          <div class="text-accent font-mono text-sm mb-2">Interlat</div>
-          <div class="text-white font-medium mb-3">Inter-agent latent telepathy</div>
-          <ul class="text-[#999] text-sm space-y-1.5">
-            <li>Bypasses tokenization entirely</li>
-            <li>Works across heterogeneous models</li>
-            <li>Up to 24× inference speedup with compression</li>
-            <li>Preserves reasoning nuance lost in text</li>
+          <div class="text-accent font-mono text-xs mb-1">Zhejiang University + Alibaba</div>
+          <div class="text-white font-semibold mb-1">Interlat</div>
+          <div class="text-[#666] text-xs mb-3">Inter-agent Latent Space Communication</div>
+          <ul class="text-[#999] text-sm space-y-1.5 mb-4">
+            <li>✓ Works across <strong class="text-[#ccc]">heterogeneous models</strong></li>
+            <li>✓ Transmits last-layer hidden states only</li>
+            <li>✓ Compresses to as few as 8 latent tokens</li>
+            <li>✓ Up to 24× inference speedup</li>
+            <li>⚠ Requires fine-tuning a small compression module</li>
           </ul>
           <a href="https://arxiv.org/abs/2511.09149" target="_blank"
-            class="inline-block mt-4 text-xs text-accent hover:underline">arXiv:2511.09149 ↗</a>
+            class="text-xs text-accent hover:underline">arXiv:2511.09149 ↗</a>
         </div>
+        <div class="bg-[#111] border border-[#222] rounded-lg p-5">
+          <div class="text-accent font-mono text-xs mb-1">Princeton / UIUC / Stanford</div>
+          <div class="text-white font-semibold mb-1">LatentMAS</div>
+          <div class="text-[#666] text-xs mb-3">Latent Collaboration in Multi-Agent Systems</div>
+          <ul class="text-[#999] text-sm space-y-1.5 mb-4">
+            <li>✓ <strong class="text-[#ccc]">Training-free</strong> — works out of the box</li>
+            <li>✓ +14.6% accuracy over text-based MAS</li>
+            <li>✓ 70–84% fewer output tokens</li>
+            <li>✓ 4–4.3× faster inference</li>
+            <li>⚠ Requires same model architecture (KV cache sharing)</li>
+          </ul>
+          <a href="https://arxiv.org/abs/2511.20639" target="_blank"
+            class="text-xs text-accent hover:underline">arXiv:2511.20639 ↗</a>
+        </div>
+      </div>
+
+      <!-- Key distinction -->
+      <div class="bg-[#0d0d1a] border border-[#1a1a3a] rounded-lg p-5 mb-8">
+        <div class="text-blue-400 font-mono text-xs mb-3">// Key distinction for T&J</div>
+        <p class="text-[#ccc] text-sm leading-relaxed mb-3">
+          <strong class="text-white">LatentMAS</strong> shares KV caches between agents — powerful but requires both nodes
+          to run the exact same model architecture. Best suited for within-Jerry multi-agent tasks
+          where all agents run locally on the same hardware.
+        </p>
+        <p class="text-[#ccc] text-sm leading-relaxed">
+          <strong class="text-white">Interlat</strong> trains a small compression module and transmits only last-layer hidden states.
+          Crucially, it works even when Tom and Jerry run <em>different model architectures</em> —
+          making it the more relevant paper for cross-machine tom-and-jerry communication.
+        </p>
       </div>
 
       <h3 class="text-lg font-semibold text-white mb-4">How this maps to tom-and-jerry</h3>
 
-      <p class="text-[#ccc] leading-relaxed mb-4">
-        There are two distinct layers where latent communication could apply:
-      </p>
-
       <div class="space-y-4 mb-8">
         <div class="border-l-2 border-accent pl-5">
-          <div class="text-white font-medium mb-1">Within-Jerry collaboration (near-term)</div>
+          <div class="text-white font-medium mb-1">Within-Jerry collaboration (near-term, LatentMAS)</div>
           <p class="text-[#999] text-sm leading-relaxed">
             If Jerry runs multiple local agents (planner + executor, both on the same model),
-            LatentMAS lets them collaborate without tokenizing between steps.
+            LatentMAS lets them collaborate without tokenizing between steps — training-free, immediate gains.
             Tom handles the cross-machine hop; LatentMAS handles the within-Jerry reasoning chain.
-            These are complementary layers, not competing approaches.
+            Complementary layers, not competing approaches.
+          </p>
+        </div>
+        <div class="border-l-2 border-[#ff6b35aa] pl-5">
+          <div class="text-white font-medium mb-1">Cross-machine latent task dispatch (medium-term, Interlat)</div>
+          <p class="text-[#999] text-sm leading-relaxed">
+            Tom (cloud, any model) sends a latent-compressed prefix to Jerry instead of a text prompt.
+            Jerry runs a local model + small Interlat compression module (fine-tuned, not full retrain).
+            Because Interlat works across heterogeneous architectures, Tom doesn't need to match Jerry's model.
+            Jerry decodes the answer and returns a text result — one-way latent is where the gains are.
           </p>
         </div>
         <div class="border-l-2 border-[#444] pl-5">
-          <div class="text-white font-medium mb-1">Cross-machine latent transfer (future)</div>
+          <div class="text-white font-medium mb-1">Full bidirectional latent comms (future)</div>
           <p class="text-[#999] text-sm leading-relaxed">
-            True Tom↔Jerry latent communication requires both nodes to run the same local model
-            with hidden state access (e.g. via vLLM), plus sufficient network bandwidth to transfer
-            KV caches. Feasible on a local LAN; more challenging over WAN.
-            API-based inference (Anthropic, OpenAI) does not expose hidden states and cannot
-            participate in latent transfer.
+            Both nodes transmit latent prefixes in both directions. Requires local inference on Tom's side
+            (can't extract hidden states from API calls to Anthropic/OpenAI). Likely a dedicated
+            "latent mode" in the protocol, with graceful text fallback for API-only nodes.
           </p>
         </div>
       </div>
 
-      <div class="bg-[#0d1a0d] border border-[#1a3a1a] rounded-lg p-5">
-        <div class="text-green-400 font-mono text-xs mb-2">// Planned: TJLatentMessage</div>
+      <!-- Protocol sketch -->
+      <div class="bg-[#0a0a0a] border border-[#222] rounded-lg p-5 mb-2">
+        <div class="text-green-400 font-mono text-xs mb-3">// Planned: TJLatentMessage (Phase N)</div>
         <pre class="text-[#ccc] text-sm overflow-x-auto"><code>{`type TJLatentMessage = {
   type: "latent";
   peer: string;
-  model: string;           // must match receiver
-  hidden_states: Float16Array;  // last-layer hidden states
-  kv_cache?: KVCache;      // optional: full working memory transfer
   task_id: string;
+
+  // Interlat-style: last-layer hidden states, compressed
+  hidden_states: Float16Array;   // sender's last-layer activations
+  compression: "interlat-v1";    // compression scheme identifier
+  token_count: number;           // compressed latent token count (min: 8)
+
+  // LatentMAS-style: full KV cache (same-model peers only)
+  kv_cache?: KVCache;
+  kv_model: string;              // must match receiver's loaded model
+
+  fallback_text?: string;        // graceful degradation for text-only peers
 }`}</code></pre>
-        <p class="text-[#666] text-xs mt-3">
-          A new TJMessage variant for nodes that support hidden state exchange.
-          Falls back to text automatically when peer doesn't support it.
-        </p>
       </div>
+      <p class="text-[#555] text-xs mb-2 pl-1">
+        Falls back to text automatically when the peer doesn't support latent communication.
+      </p>
     </section>
 
-    <!-- Webhook Results -->
+    <!-- LatentMAS within Jerry -->
     <section class="mb-16">
       <div class="flex items-start gap-4 mb-6">
         <span class="text-3xl">⚡</span>
         <div>
           <h2 class="text-2xl font-semibold text-white mb-2">Webhook Result Push</h2>
-          <p class="text-muted text-sm">Eliminating polling latency</p>
+          <p class="text-muted text-sm">Eliminating polling latency on tj send --wait</p>
         </div>
       </div>
       <p class="text-[#ccc] leading-relaxed">
-        Currently <code class="text-accent font-mono text-sm">tj send --wait</code> polls for results.
+        Currently <code class="text-accent font-mono text-sm">tj send --wait</code> polls for results on a fixed interval.
         The plan is for Jerry to push results directly to Tom's gateway endpoint the moment a task
-        completes — eliminating wait time entirely and enabling real-time streaming of partial outputs.
+        completes — eliminating wait time entirely and enabling real-time streaming of partial outputs
+        for long-running tasks (image gen, large inference, video processing).
       </p>
     </section>
 
-    <!-- Streaming -->
     <section class="mb-16">
       <div class="flex items-start gap-4 mb-6">
         <span class="text-3xl">📡</span>
@@ -134,9 +173,9 @@ import Layout from '../../layouts/Layout.astro';
         </div>
       </div>
       <p class="text-[#ccc] leading-relaxed">
-        Long-running tasks (image generation, large inference, video processing) would stream
-        partial results back to Tom as they complete — progress updates, intermediate outputs,
-        token-by-token streaming for LLM tasks.
+        Long-running tasks would stream partial results back to Tom as they complete —
+        progress updates, intermediate outputs, token-by-token streaming for LLM tasks.
+        Paired with webhook push, this makes Jerry feel like a local process rather than a remote job.
       </p>
     </section>
 
