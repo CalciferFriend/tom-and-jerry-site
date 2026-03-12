@@ -123,4 +123,67 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </section>
+
+  <!-- Mission -->
+  <section class="max-w-7xl mx-auto px-6 py-20">
+    <div class="max-w-3xl mx-auto">
+      <div class="border-l-2 border-[var(--primary)] pl-8 mb-10">
+        <p class="text-[#888] text-lg italic leading-relaxed mb-2">
+          "We do not have organs of communication. Our brains can display our thoughts
+          to the outside world, thereby achieving communication."
+        </p>
+        <p class="text-[#555] text-sm">— Cixin Liu, <em>The Dark Forest</em></p>
+      </div>
+
+      <h2 class="text-3xl font-bold text-white mb-6">Our mission</h2>
+
+      <p class="text-[#aaa] leading-relaxed mb-5">
+        Today, tom-and-jerry speaks text. Tom sends a prompt. Jerry sends a response. That works —
+        and it's how every multi-agent system in production works right now.
+      </p>
+
+      <p class="text-[#aaa] leading-relaxed mb-5">
+        But text is a lossy compression of thought. Every message forces an agent to collapse its
+        rich internal state into a sequence of tokens, discarding alternative reasoning paths and
+        nuance that never survives the translation.
+      </p>
+
+      <p class="text-white leading-relaxed mb-8 text-lg">
+        Our mission is to push the boundaries of what inter-agent communication can be —
+        and to build the transport and memory-sharing layer that makes it possible as those
+        boundaries move. <strong class="text-[var(--primary)]">The real question is what the
+        protocol looks like when the payload isn't text at all.</strong>
+      </p>
+
+      <div class="bg-[var(--surface)] border border-[#1a1a2e] rounded-lg p-6 mb-8">
+        <div class="text-blue-400 font-mono text-xs mb-4">// where this is going</div>
+        <div class="space-y-3 text-sm text-[#999]">
+          <div class="flex items-start gap-3">
+            <span class="text-[var(--secondary)] font-mono mt-0.5">✓</span>
+            <span><strong class="text-white">Today:</strong> TJMessage carries text tasks and results across machines</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-[var(--primary)] font-mono mt-0.5">→</span>
+            <span><strong class="text-white">Near-term:</strong> LatentMAS within-Jerry multi-agent coordination (training-free, same model)</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-[var(--primary)] font-mono mt-0.5">→</span>
+            <span><strong class="text-white">Future:</strong> TJLatentMessage — hidden state transfer across heterogeneous models, with text fallback</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-[#666] text-sm leading-relaxed">
+        Research like <a href="https://arxiv.org/abs/2511.09149" target="_blank" class="text-[var(--primary)] hover:underline">Interlat</a> and <a href="https://arxiv.org/abs/2511.20639" target="_blank" class="text-[var(--primary)] hover:underline">LatentMAS</a> shows
+        agents communicating via raw hidden states achieve up to 24× faster inference and 80% fewer tokens —
+        across heterogeneous architectures. Neither ships a production transport layer. That's the gap.
+      </p>
+
+      <div class="mt-8">
+        <a href="/docs/future" class="text-[var(--primary)] hover:underline text-sm font-medium">
+          Read the full research roadmap →
+        </a>
+      </div>
+    </div>
+  </section>
 </Layout>
